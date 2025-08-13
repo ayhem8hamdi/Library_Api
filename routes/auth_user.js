@@ -2,12 +2,8 @@ const express = require("express");
 const router= express.Router();
 const {User, validateRegisterUser, validateLoginUser} = require("../models/User_model"); 
 const asyncHandler= require("express-async-handler");
-const {hashPassword , comparePasswords} = require("../Helper/password_hashing");;
+const {hashPassword , comparePasswords} = require("../Helper/password_hashing");
 const {blockNonAdminFromSettingIsAdmin}=require("../middlewares/verify_token");
-
-
-
-
 
 /* 
     * @desc Register New User 

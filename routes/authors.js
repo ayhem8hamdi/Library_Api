@@ -33,7 +33,16 @@ router.post("/",verifyTokenValidity,hasAdminAcces,asyncHandler(
 
 router.get("/",asyncHandler(
     async (req,rep)=>{
-    const authorList =await Author.find();
+    let { page,authorPerPage } = req.query; 
+    page = parseInt(page) || 1;     
+    authorPerPage = parseInt(authorPerPage) || 10;    
+
+    if (page < 1) page = 1;
+    if (authorPerPage < 1) authorPerPage = 1;
+
+    const skip = (page - 1) * authorPerPage;
+
+    const authorList =await Author.find().skip(skip).limit(authorPerPage);
     rep.status(200).json(authorList); // json used instead of send to send json data
 }
 ));
