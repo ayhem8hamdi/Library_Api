@@ -1,4 +1,4 @@
-const books = [
+const data = [
   {
     title: "Black Swan",
     author: "689be070d168df4e136330b3",
@@ -46,5 +46,5 @@ const books = [
 
 
 module.exports = {
-  books,
+  data,
 };
